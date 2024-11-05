@@ -1,7 +1,14 @@
-import {useContext, useState} from "react";
-import {CounterContext} from "/src/context/CounterContext.jsx";
+import React from "react";
+import { useSelector } from "react-redux";
 
-export  default function CounterDisplay() {
-    const { count } = useContext(CounterContext);
-    return <h1>Поточне значення: {count}</h1>;
-}
+const CounterDisplay = () => {
+    const count = useSelector((state) => state.counter.value);
+
+    return (
+        <div>
+            <h1>Лічильник: {count}</h1>
+        </div>
+    );
+};
+
+export default CounterDisplay

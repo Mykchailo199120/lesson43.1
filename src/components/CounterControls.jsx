@@ -1,15 +1,18 @@
-import {useContext} from "react";
-import { CounterContext } from '../context/CounterContext.jsx';
+import React from "react";
+import { useDispatch } from "react-redux";
+import { increment, decrement} from "../Store/counterSlice.jsx";
 
-
-export default function CounterControls() {
-    const { increment, decrement, reset } = useContext(CounterContext);
+const CounterControls = () => {
+    const dispatch = useDispatch();
 
     return (
         <div>
-            <button onClick={increment}>Збільшити</button>
-            <button onClick={decrement}>Зменшити</button>
-            <button onClick={reset}>Скинути</button>
+            <button onClick={() => dispatch(increment())}>+</button>
+            <button onClick={() => dispatch(decrement())}>-</button>
+            <button onClick={() => dispatch(reset())}>Скинути</button>
+
         </div>
     );
-}
+};
+
+export default CounterControls;
